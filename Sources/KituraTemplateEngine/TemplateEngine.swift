@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright IBM Corporation 2015
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +12,25 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- **/
+ */
 
-// Template Engine for Kitura
-// influenced by http://expressjs.com/en/guide/using-template-engines.html
 
+/// Template Engine protocol for Kitura. Implemented by Templating Engines in order to
+/// integrate with Kitra's content generation APIs.
+///
+/// - Note: Influenced by http://expressjs.com/en/guide/using-template-engines.html
 public protocol TemplateEngine {
+    
+    /// The file extension of files in the views directory that will be
+    /// rendered by a particular templating engine.
     var fileExtension: String { get }
+    
+    /// Take a template file and a set of "variables" in the form of a context
+    /// and generate content to be sent back to the client.
+    ///
+    /// - Parameter filePath: The path of the template file to use when generating
+    ///                      the content.
+    /// - Parameter context: A set of variables in the form of a Dictionary of
+    ///                     Key/Value pairs, that can be used when generating the content.
     func render(filePath: String, context: [String: Any]) throws -> String
 }

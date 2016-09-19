@@ -16,7 +16,7 @@
 
 
 /// Template Engine protocol for Kitura. Implemented by Templating Engines in order to
-/// integrate with Kitra's content generation APIs.
+/// integrate with Kitura's content generation APIs.
 ///
 /// - Note: Influenced by http://expressjs.com/en/guide/using-template-engines.html
 public protocol TemplateEngine {

@@ -33,4 +33,13 @@ public protocol TemplateEngine {
     /// - Parameter context: A set of variables in the form of a Dictionary of
     ///                     Key/Value pairs, that can be used when generating the content.
     func render(filePath: String, context: [String: Any]) throws -> String
+    
+    /// Take a template file and a set of "variables" in the form of a context
+    /// and generate content to be sent back to the client.
+    ///
+    /// - Parameter filePath: The path of the template file to use when generating
+    ///                      the content.
+    /// - Parameter context: A set of variables in the form of a Dictionary of
+    ///                     Key/Value pairs, that can be used when generating the content.
+    func render(filePath: String, context: [String: Any], options: [String: Any]) throws -> String
 }

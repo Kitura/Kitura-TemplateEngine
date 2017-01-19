@@ -41,5 +41,7 @@ public protocol TemplateEngine {
     ///                      the content.
     /// - Parameter context: A set of variables in the form of a Dictionary of
     ///                     Key/Value pairs, that can be used when generating the content.
+    /// - Parameter options: A set of variables in the form of a Dictionary of
+    ///                     Key/Value pairs, that can be used to provide options.
     func render(filePath: String, context: [String: Any], options: [String: Any]) throws -> String
 }

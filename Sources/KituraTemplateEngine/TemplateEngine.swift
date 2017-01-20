@@ -17,7 +17,9 @@
 
 public protocol RenderingOptions {}
 
-public struct NullRenderingOptions: RenderingOptions {}
+public struct NullRenderingOptions: RenderingOptions {
+    public init() {}
+}
 
 /// Template Engine protocol for Kitura. Implemented by Templating Engines in order to
 /// integrate with Kitura's content generation APIs.

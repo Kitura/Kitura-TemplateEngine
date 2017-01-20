@@ -49,15 +49,15 @@ public protocol TemplateEngine {
     ///                     Key/Value pairs, that can be used when generating the content.
     /// - Parameter options: rendering options, different per each template engine
     ///
-    func render(filePath: String, context: [String: Any], options:
-                    RenderingOptions) throws -> String
+    func render(filePath: String, context: [String: Any],
+                options: RenderingOptions) throws -> String
 }
 
 extension TemplateEngine {
     // implementation of render with options parameter for TemplateEngines
     // that did not implement it
-    func render(filePath: String, context: [String: Any], options:
-                    RenderingOptions) throws -> String {
+    func render(filePath: String, context: [String: Any],
+                options: RenderingOptions) throws -> String {
         return try render(filePath: filePath, context: context)
     }
 }

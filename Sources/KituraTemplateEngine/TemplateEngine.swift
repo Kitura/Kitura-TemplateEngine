@@ -19,7 +19,7 @@ public protocol RenderingOptions {
     static func getOptions(for: TemplateEngine) -> RenderingOptions?
 }
 
-public final class NullRenderingOptions: RenderingOptions {
+public struct NullRenderingOptions: RenderingOptions {
     public static func getOptions(for: TemplateEngine) -> RenderingOptions? {
         return nil
     }

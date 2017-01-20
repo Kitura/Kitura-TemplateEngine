@@ -15,16 +15,26 @@
  */
 
 
+public protocol RenderingOptions {
+    static func getOptions(for: TemplateEngine) -> RenderingOptions?
+}
+
+public final class NullRenderingOptions: RenderingOptions {
+    public static func getOptions(for: TemplateEngine) -> RenderingOptions? {
+        return nil
+    }
+}
+
 /// Template Engine protocol for Kitura. Implemented by Templating Engines in order to
 /// integrate with Kitura's content generation APIs.
 ///
 /// - Note: Influenced by http://expressjs.com/en/guide/using-template-engines.html
 public protocol TemplateEngine {
-    
+
     /// The file extension of files in the views directory that will be
     /// rendered by a particular templating engine.
     var fileExtension: String { get }
-    
+
     /// Take a template file and a set of "variables" in the form of a context
     /// and generate content to be sent back to the client.
     ///
@@ -32,5 +42,6 @@ public protocol TemplateEngine {
     ///                      the content.
     /// - Parameter context: A set of variables in the form of a Dictionary of
     ///                     Key/Value pairs, that can be used when generating the content.
-    func render(filePath: String, context: [String: Any]) throws -> String
+    func render(filePath: String, context: [String: Any], options:
+                    RenderingOptions = NullRenderingOptions()) throws -> String
 }

@@ -15,15 +15,9 @@
  */
 
 
-public protocol RenderingOptions {
-    static func getOptions(for: TemplateEngine) -> RenderingOptions?
-}
+public protocol RenderingOptions {}
 
-public struct NullRenderingOptions: RenderingOptions {
-    public static func getOptions(for: TemplateEngine) -> RenderingOptions? {
-        return nil
-    }
-}
+public struct NullRenderingOptions: RenderingOptions {}
 
 /// Template Engine protocol for Kitura. Implemented by Templating Engines in order to
 /// integrate with Kitura's content generation APIs.

@@ -56,8 +56,8 @@ public protocol TemplateEngine {
 extension TemplateEngine {
     // implementation of render with options parameter for TemplateEngines
     // that did not implement it
-    func render(filePath: String, context: [String: Any],
-                options: RenderingOptions) throws -> String {
+    public func render(filePath: String, context: [String: Any],
+                       options: RenderingOptions) throws -> String {
         return try render(filePath: filePath, context: context)
     }
 }

@@ -85,7 +85,7 @@ extension TemplateEngine {
     // that did not implement it
     public func render(filePath: String, context: [String: Any],
                        options: RenderingOptions, templateName: String) throws -> String {
-        return try render(filePath: filePath, context: context)
+        return try render(filePath: filePath, context: context, options: options)
     }
 
     // implementation of setRootPaths for TemplateEngines that do not implement it

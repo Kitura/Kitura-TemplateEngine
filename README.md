@@ -17,37 +17,41 @@
 </p>
 
 # Kitura-TemplateEngine
-Template engine abstraction layer
+The Kitura template engine abstraction layer.
 
 ## Summary
-Kitura-TemplateEngine provides a TemplateEngine protocol to unify the APIs of multiple template engines and integrate them with Kitura's content generation APIs. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client. This approach makes it easier to design an HTML page with integrated swift code.
+Kitura-TemplateEngine provides a "TemplateEngine" protocol to unify the APIs of multiple template engines and integrate them with Kitura's content generation APIs. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client. This approach makes it easier to design an HTML page with integrated Swift code.
 
-Kitura-TemplateEngine is easy to learn, consumable framework that comes with a set of [implemented plugins](#list-of-plugins).
+- Inspired by http://expressjs.com/en/guide/using-template-engines.html.
+
+## List of Plugins:
+Kitura-TemplateEngine is an easy to learn, consumable framework that comes with a set of implemented plugins:
+
+* [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine)
+* [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine)
+* [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown)
 
 ## Examples
-
-A Kitura-StencilTemplateEngine tutorial on adding a website front end to a food tracker application is available [here](https://github.com/IBM/FoodTrackerBackend/blob/master/StencilFrontend.md).
-
-The following code examples will use the [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine), however, because this is an abstraction layer, Stencil could be substituted for any other supported template engine.
+The following code examples use the [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine), however, because this is an abstraction layer, Stencil could be substituted for any supported template engine.
 
 The following code initializes a Stencil template engine and adds it to the [Kitura](https://github.com/IBM-Swift/Kitura) router.
-The template engine is added which will render files with its default file extensions (so for StencilTemplateEngine() this would be .stencil files).
+This will render files with the template engine's default file extension, in this example these would be .stencil files.
 ```swift
 router.add(templateEngine: StencilTemplateEngine())
 ```
 
-The following example specifies additional file extensions so the template engine will be used to render a file with the file extension ".example".  Because useDefaultFileExtension was set to false, the default file extentions (.stencil for StencilTemplateEngine) will not be rendered with this template engine.
+Here we show how to render files which don't have the same default file extension as the chosen template engine. In this example "useDefaultFileExtension" is set to false, so the default file extension (.stencil in this case) will not be rendered and files with the extension .example will be rendered.
 
 ```swift
 router.add(templateEngine: StencilTemplateEngine(), forFileExtensions: [".example"], useDefaultFileExtension: false)
 ```
 
-The following code will set the default template engine for the router. If there are any file extensions used which do not match to any template engines added to the router, then the router will render the file using this default template engine.
+If there are any files with file extensions which do not match any of the template engines which have been added to the router, the router will render the file using the default template engine. You can set the default template engine for the router as follows:
 ```swift
 router.setDefault(templateEngine: StencilTemplateEngine())
 ```
 
-The following example will render the stencil template "example.stencil" and add it to our routers response. Since no file path is provided the template file will be retrieved from the default location, which is the `Views` folder. the context variable must be valid JSON format and allows you to pass variables through to the template engine to be used inside your template file. The template files are template engine specific so for more details, look at the [template engine plugins](#list-of-plugins).
+The following example will render the stencil template "example.stencil" and add it to our router's response. The template file will be retrieved from the default location, which is the `Views` folder. The context variable allows you to pass data through to the template engine and must be valid JSON.
 ```swift
 router.get("/example") { request, response, next in
     var context: [String: Any] = ["key" : "value"]
@@ -55,14 +59,6 @@ router.get("/example") { request, response, next in
     next()
 }
 ```
-
-## List of Plugins:
-
-* [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine)
-
-* [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine)
-
-* [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown)
 
 ## License
 This library is licensed under Apache 2.0. Full license text is available in [LICENSE](LICENSE.txt).

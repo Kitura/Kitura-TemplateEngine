@@ -35,12 +35,12 @@ Kitura-TemplateEngine is an easy to learn, consumable framework that comes with 
 The following code examples use the [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine), however, because this is an abstraction layer, Stencil could be substituted for any supported template engine.
 
 The following code initializes a [Stencil](https://github.com/kylef/Stencil) template engine and adds it to the [Kitura](https://github.com/IBM-Swift/Kitura) router.
-This will render files with the template engine's default file extension, in this example these would be .stencil files.
+This will render files with the template engine's default file extension, in this example these would be `.stencil` files.
 ```swift
 router.add(templateEngine: StencilTemplateEngine())
 ```
 
-Here we show how to render files which don't have the same default file extension as the chosen template engine. In this example `useDefaultFileExtension` is set to false, so the default file extension (`.stencil` in this case) will not be rendered and files with the extension .example will be rendered.
+Here we show how to render files which don't have the same default file extension as the chosen template engine. In this example `useDefaultFileExtension` is set to false, so the default file extension (`.stencil` in this case) will not be rendered and files with the extension `.example` will be rendered.
 
 ```swift
 router.add(templateEngine: StencilTemplateEngine(), forFileExtensions: [".example"], useDefaultFileExtension: false)

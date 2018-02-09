@@ -20,7 +20,7 @@
 The Kitura template engine abstraction layer.
 
 ## Summary
-Kitura-TemplateEngine provides a "TemplateEngine" protocol to unify the APIs of multiple template engines and integrate them with Kitura's content generation APIs. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client. This approach makes it easier to design an HTML page with integrated Swift code.
+Kitura-TemplateEngine provides a `TemplateEngine` protocol to unify the APIs of multiple template engines and integrate them with Kitura's content generation APIs. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client. This approach makes it easier to design an HTML page with integrated Swift code.
 
 - Inspired by http://expressjs.com/en/guide/using-template-engines.html.
 
@@ -34,13 +34,13 @@ Kitura-TemplateEngine is an easy to learn, consumable framework that comes with 
 ## Examples
 The following code examples use the [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine), however, because this is an abstraction layer, Stencil could be substituted for any supported template engine.
 
-The following code initializes a Stencil template engine and adds it to the [Kitura](https://github.com/IBM-Swift/Kitura) router.
+The following code initializes a [Stencil](https://github.com/kylef/Stencil) template engine and adds it to the [Kitura](https://github.com/IBM-Swift/Kitura) router.
 This will render files with the template engine's default file extension, in this example these would be .stencil files.
 ```swift
 router.add(templateEngine: StencilTemplateEngine())
 ```
 
-Here we show how to render files which don't have the same default file extension as the chosen template engine. In this example "useDefaultFileExtension" is set to false, so the default file extension (.stencil in this case) will not be rendered and files with the extension .example will be rendered.
+Here we show how to render files which don't have the same default file extension as the chosen template engine. In this example `useDefaultFileExtension` is set to false, so the default file extension (`.stencil` in this case) will not be rendered and files with the extension .example will be rendered.
 
 ```swift
 router.add(templateEngine: StencilTemplateEngine(), forFileExtensions: [".example"], useDefaultFileExtension: false)
@@ -51,7 +51,7 @@ If there are any files with file extensions which do not match any of the templa
 router.setDefault(templateEngine: StencilTemplateEngine())
 ```
 
-The following example will render the stencil template "example.stencil" and add it to our router's response. The template file will be retrieved from the default location, which is the `Views` folder. The context variable allows you to pass data through to the template engine and must be valid JSON.
+The following example will render the Stencil template `example.stencil` and add it to our router's response. The template file will be retrieved from the default location, which is the `Views` folder. The context variable allows you to pass data through to the template engine and must be valid JSON.
 ```swift
 router.get("/example") { request, response, next in
     var context: [String: Any] = ["key" : "value"]

@@ -66,7 +66,7 @@ public protocol TemplateEngine {
     func render(filePath: String, context: [String: Any],
                 options: RenderingOptions, templateName: String) throws -> String
 
-    /// Take a template file and a Codable type and generate the content to be sent back to the client.
+    /// Take a template file and an Encodable type and generate the content to be sent back to the client.
     ///
     /// - Parameter filePath: The path of the template file to use when generating
     ///                      the content.

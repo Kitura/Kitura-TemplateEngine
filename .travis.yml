@@ -1,4 +1,4 @@
-# Travis CI build file.
+# Travis CI build file
 
 # whitelist (branches that should be built)
 branches:
@@ -11,11 +11,11 @@ branches:
 # by .swift-version, unless SWIFT_SNAPSHOT is specified.
 matrix:
   include:
+    # Continue to test one permutation on Trusty (14.04)
     - os: linux
-      dist: xenial
+      dist: trusty
       sudo: required
-      services: docker
-      env:  DOCKER_IMAGE=swift:4.0.3 SWIFT_SNAPSHOT=4.0.3
+      env: SWIFT_SNAPSHOT=4.0.3
     - os: linux
       dist: xenial
       sudo: required
@@ -25,17 +25,17 @@ matrix:
       dist: xenial
       sudo: required
       services: docker
-      env: DOCKER_IMAGE=swift:4.2.3
+      env: DOCKER_IMAGE=swift:4.2.4 SWIFT_SNAPSHOT=4.2.4 SWIFT_TEST_ARGS="--parallel"
     - os: linux
       dist: xenial
       sudo: required
       services: docker
-      env: DOCKER_IMAGE=swift:4.2.3 SWIFT_SNAPSHOT=$SWIFT_DEVELOPMENT_SNAPSHOT
+      env: DOCKER_IMAGE=swift:5.0-xenial SWIFT_TEST_ARGS="--parallel"
     - os: linux
       dist: xenial
       sudo: required
       services: docker
-      env: DOCKER_IMAGE=ubuntu:18.04
+      env: DOCKER_IMAGE=swift:5.0 SWIFT_SNAPSHOT=$SWIFT_DEVELOPMENT_SNAPSHOT SWIFT_TEST_ARGS="--parallel"
     - os: osx
       osx_image: xcode9.2
       sudo: required
@@ -43,14 +43,19 @@ matrix:
     - os: osx
       osx_image: xcode9.4
       sudo: required
-      env: SWIFT_SNAPSHOT=4.1.2 JAZZY_ELIGIBLE=true
+      env: SWIFT_SNAPSHOT=4.1.2
     - os: osx
       osx_image: xcode10.1
       sudo: required
+      env: SWIFT_SNAPSHOT=4.2.1 JAZZY_ELIGIBLE=true SWIFT_TEST_ARGS="--parallel"
     - os: osx
-      osx_image: xcode10.1
+      osx_image: xcode10.2
       sudo: required
-      env: SWIFT_SNAPSHOT=$SWIFT_DEVELOPMENT_SNAPSHOT
+      env: SWIFT_TEST_ARGS="--parallel"
+    - os: osx
+      osx_image: xcode10.2
+      sudo: required
+      env: SWIFT_SNAPSHOT=$SWIFT_DEVELOPMENT_SNAPSHOT SWIFT_TEST_ARGS="--parallel"
 
 before_install:
   - git clone https://github.com/IBM-Swift/Package-Builder.git

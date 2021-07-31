@@ -1,14 +1,14 @@
 <p align="center">
 <a href="http://kitura.io/">
-<img src="https://raw.githubusercontent.com/IBM-Swift/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
+<img src="https://raw.githubusercontent.com/Kitura/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
 </a>
 </p>
 
 <p align="center">
-    <a href="https://ibm-swift.github.io/Kitura-TemplateEngine/index.html">
+    <a href="https://kitura.github.io/Kitura-TemplateEngine/index.html">
     <img src="https://img.shields.io/badge/apidoc-KituraTemplateEngine-1FBCE4.svg?style=flat" alt="APIDoc">
     </a>
-    <img src="https://travis-ci.org/IBM-Swift/Kitura-TemplateEngine.svg?branch=master" alt="Build Status - Master">
+    <img src="https://travis-ci.org/Kitura/Kitura-TemplateEngine.svg?branch=master" alt="Build Status - Master">
     </a>
     <img src="https://img.shields.io/badge/os-macOS-green.svg?style=flat" alt="macOS">
     <img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
@@ -28,9 +28,9 @@ Kitura-TemplateEngine provides a `TemplateEngine` protocol to unify the APIs of 
 ## List of Plugins:
 Kitura-TemplateEngine is an easy to learn, consumable framework that comes with a set of implemented plugins:
 
-* [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine)
-* [Kitura-MustacheTemplateEngine](https://github.com/IBM-Swift/Kitura-MustacheTemplateEngine)
-* [Kitura-Markdown](https://github.com/IBM-Swift/Kitura-Markdown)
+* [Kitura-StencilTemplateEngine](https://github.com/Kitura/Kitura-StencilTemplateEngine)
+* [Kitura-MustacheTemplateEngine](https://github.com/Kitura/Kitura-MustacheTemplateEngine)
+* [Kitura-Markdown](https://github.com/Kitura/Kitura-Markdown)
 
 ## Usage
 
@@ -38,10 +38,10 @@ Kitura-TemplateEngine is an easy to learn, consumable framework that comes with 
 
 #### Add dependencies
 
-Add the `Kitura-TemplateEngine` package to the dependencies within your application’s `Package.swift` file. Substitute `"x.x.x"` with the latest `Kitura-TemplateEngine` [release](https://github.com/IBM-Swift/Kitura-TemplateEngine/releases).
+Add the `Kitura-TemplateEngine` package to the dependencies within your application’s `Package.swift` file. Substitute `"x.x.x"` with the latest `Kitura-TemplateEngine` [release](https://github.com/Kitura/Kitura-TemplateEngine/releases).
 
 ```swift
-.package(url: "https://github.com/IBM-Swift/Kitura-TemplateEngine.git", from: "x.x.x")
+.package(url: "https://github.com/Kitura/Kitura-TemplateEngine.git", from: "x.x.x")
 ```
 
 Add `KituraTemplateEngine` to your target's dependencies:
@@ -57,11 +57,11 @@ import KituraTemplateEngine
 ```
 
 ## Examples
-The following code examples use the [Kitura-StencilTemplateEngine](https://github.com/IBM-Swift/Kitura-StencilTemplateEngine), however, because this is an abstraction layer, Stencil could be substituted for any supported template engine.
+The following code examples use the [Kitura-StencilTemplateEngine](https://github.com/Kitura/Kitura-StencilTemplateEngine), however, because this is an abstraction layer, Stencil could be substituted for any supported template engine.
 
 If you are using Stencil, within your `Package.swift` file you will need to:
 
- - Define "https://github.com/IBM-Swift/Kitura-StencilTemplateEngine.git" as a dependency.
+ - Define "https://github.com/Kitura/Kitura-StencilTemplateEngine.git" as a dependency.
  - Add "KituraStencil" to the targets for Application.
 
  You will also need to add `KituraStencil` to the file where you're writing your Swift code:
@@ -69,7 +69,7 @@ If you are using Stencil, within your `Package.swift` file you will need to:
 import KituraStencil
 ```
 
-The following code initializes a [Stencil](https://github.com/kylef/Stencil) template engine and adds it to the [Kitura](https://github.com/IBM-Swift/Kitura) router.
+The following code initializes a [Stencil](https://github.com/kylef/Stencil) template engine and adds it to the [Kitura](https://github.com/Kitura/Kitura) router.
 This will render files with the template engine's default file extension, in this example these would be `.stencil` files.
 ```swift
 router.add(templateEngine: StencilTemplateEngine())
@@ -96,11 +96,11 @@ router.get("/example") { request, response, next in
 ```
 
 ## API Documentation
-For more information visit our [API reference](https://ibm-swift.github.io/Kitura-TemplateEngine/index.html).
+For more information visit our [API reference](https://kitura.github.io/Kitura-TemplateEngine/index.html).
 
 ## Community
 
 We love to talk server-side Swift, and Kitura. Join our [Slack](http://swift-at-ibm-slack.mybluemix.net/) to meet the team!
 
 ## License
-This library is licensed under Apache 2.0. Full license text is available in [LICENSE](https://github.com/IBM-Swift/Kitura-TemplateEngine/blob/master/LICENSE.txt).
+This library is licensed under Apache 2.0. Full license text is available in [LICENSE](https://github.com/Kitura/Kitura-TemplateEngine/blob/master/LICENSE.txt).
